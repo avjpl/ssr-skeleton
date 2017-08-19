@@ -9,7 +9,6 @@ const { PORT, PATHS } = require('./webpack.constants');
 const commonConfig = merge([
   {
     entry: [
-      // `webpack-dev-server/client?http://0.0.0.0:${ PORT }/`,
       `webpack-hot-middleware/client?http://0.0.0.0:${ PORT }/`,
       PATHS.client,
     ],

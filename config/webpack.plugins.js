@@ -6,17 +6,7 @@ const DashboardPlugin = require('webpack-dashboard/plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-/*
-  new webpack.HotModuleReplacementPlugin(),
-  new webpack.NoEmitOnErrorsPlugin()
-*/
-
 const plugins = [
-  // new webpack.DefinePlugin({
-  //   PRODUCTION: JSON.stringify(true),
-  // }),
-  new webpack.HotModuleReplacementPlugin(),
-  new webpack.NoEmitOnErrorsPlugin(),
   new CopyWebpackPlugin([
     {
       from: path.resolve(__dirname, '..', 'src', 'views'),
@@ -30,13 +20,6 @@ const plugins = [
     lintDirtyModulesOnly: true,
   }),
   new DashboardPlugin(),
-  /*
-  new HtmlWebpackPlugin({
-    title: 'Webpack demo',
-    // template: path.resolve(__dirname, '..', 'src', 'views', 'layouts', 'layout.hbs'),
-    template: 'src/index.html',
-  }),
-  */
   new webpack.ProvidePlugin({
     $: 'jquery',
     jQuery: 'jquery',

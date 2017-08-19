@@ -6,7 +6,6 @@ const PurifyCSSPlugin = require('purifycss-webpack');
 exports.devServer = ({ host, port } = {}) => ({
   devServer: {
     historyApiFallback: true,
-    // stats: 'errors-only',
     host, // Defaults to `localhost`
     port, // Defaults to 8080
     overlay: {
@@ -43,7 +42,6 @@ exports.loadFonts = ({ include, exclude, options } = {}) => ({
     rules: [
       {
         // Capture eot, ttf, woff, woff2 and svg
-        // test: /\.(eot|ttf|woff(2)?|svg)(\?v=\d+\.\d+\.\d+)?$/,
         test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
         include,
         exclude,
@@ -142,7 +140,6 @@ exports.loadHandlebar = () => ({
         test: /\.hbs$/,
         loader: 'handlebars-loader',
         query: {
-          // defaultLayout: path.resolve(__dirname, '../../views/layouts/layout'),
           partialDirs: [
             path.resolve(__dirname, '..', 'src', 'views', 'partials'),
           ],
