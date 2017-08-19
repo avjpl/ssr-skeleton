@@ -1,0 +1,166 @@
+@import "~foundation-sites/scss/foundation.scss";
+@include foundation-everything;
+
+/*:root {
+  --color-black: rgb(0,0,0);
+  --color-blue: #32c7ff;
+  --color-white: #fff;
+}
+
+:root {
+  --font-text: sans-serif;
+  --font-weight: 300;
+  --line-height: 1.5;
+
+  --container-default-width: 90%;
+  --container-max-width: 1200px;
+
+  --width-standard: {
+    width: var(--container-default-width);
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+  }
+
+  @custom-media --viewport-small (width >= 576px);
+  @custom-media --viewport-medium (width >= 768px);
+  @custom-media --viewport-large (width >= 992px);
+  @custom-media --viewport-extralarge (width >= 1200px);
+
+  @custom-selector :--headings h1, h2, h3, h4, h5, h6;
+}*/
+
+$primary-color: #b1c1c9;
+$secondary-color: #5498bc;
+
+@define-mixin button-color $color-val {
+  background-color: #$(color-val);
+
+  &:hover {
+    box-shadow: 10px 10px 0px -3px rgba(0,0,0,0.11);
+  }
+}
+
+body {
+  background: $primary-color url('images/gate-bg.jpg') no-repeat top left;
+  background-size: cover;
+}
+
+#container {
+  display: block;
+  margin: 50px auto;
+  width: 980px;
+  background: #fff;
+}
+
+#top-container {
+  box: horizontal space-between;
+}
+
+#titles {
+  padding: 3em;
+}
+
+h1, h2, p, button {
+  font-family: "Raleway"
+}
+
+h1 {
+  margin-top: 1.7em;
+  margin-bottom: 0;
+}
+
+h2 {
+  font-size: 1.7em;
+}
+
+.subtitle {
+  font-size: 1.5em;
+  color: $secondary-color;
+  margin-top: 3em;
+}
+
+#top-container img {
+  width: 47.1%;
+  height: 47.1%;
+}
+
+#packages {
+  background-color: #e3e9ed;
+  box: horizontal space-between;
+}
+
+.hand::before {
+  font-awesome: hand-o-right;
+  margin-left: 10px;
+}
+
+.columns {
+  padding: 1em 2.5em 2.5em 2.5em;
+}
+
+.columns button {
+  border: 0;
+  padding: 1em;
+  width: 100%;
+  cursor: pointer;
+  color: white;
+  font-size: 1em;
+}
+
+@each $location, $color in (ca, ny, il), (2880b1, 9fb128, b12872) {
+  button#$(location) {
+    @mixin button-color $(color);
+  }
+}
+
+@media (max-width: 950px) {
+  #container {
+    width: 100%;
+    margin: 0;
+  }
+
+  #top-container, #packages {
+    box: vertical;
+    text-align: center;
+  }
+
+  #top-container img {
+    width: 100%;
+  }
+
+  #titles {
+    padding: 1em;
+  }
+
+  .columns {
+    padding: .5em 1.5em 1.5em 1.5em;
+  }
+}
+
+/*.article {
+  font-size: 14px;
+
+  & a {
+    color: var(--color-blue);
+  }
+
+  & p {
+    color: var(--color-black);
+    font-family: var(--font-text);
+    font-weight: var(--font-weight);
+    line-height: var(--line-height);
+  }
+
+  @media (width > 600px) {
+    max-width: 30em;
+  }
+}*/
+
+/*.header {
+  @apply --width-standard;
+  display: none;
+
+  @media (--viewport-small) {
+    display: block;
+  }
+}*/
