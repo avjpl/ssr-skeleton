@@ -28,4 +28,19 @@ const plugins = [
   }),
 ];
 
+if (process.env.NODE_ENV === 'development') {
+  plugins.push(new webpack.NoEmitOnErrorsPlugin());
+  plugins.push(new webpack.HotModuleReplacementPlugin());
+}
+
+if (process.env.NODE_ENV !== 'development') {
+  plugins.push(
+    new webpack.DefinePlugin({
+      PRODUCTION: JSON.stringify(true),
+    })
+  )
+}
+
+console.log(plugins);
+
 exports.plugins = plugins;
