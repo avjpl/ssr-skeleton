@@ -29,6 +29,14 @@ const plugins = [
 ];
 
 if (process.env.NODE_ENV === 'development') {
+  plugins.push(
+    new webpack.DefinePlugin({
+      'process.env': {
+        'WEBPACK': JSON.stringify(true),
+        'NODE_ENV': JSON.stringify('development'),
+      }
+    })
+  );
   plugins.push(new webpack.NoEmitOnErrorsPlugin());
   plugins.push(new webpack.HotModuleReplacementPlugin());
 }
@@ -36,9 +44,12 @@ if (process.env.NODE_ENV === 'development') {
 if (process.env.NODE_ENV !== 'development') {
   plugins.push(
     new webpack.DefinePlugin({
-      PRODUCTION: JSON.stringify(true),
-    })
-  )
+      'process.env': {
+        'WEBPACK': JSON.stringify(true),
+        'NODE_ENV': JSON.stringify('production'),
+      }
+    }),
+  );
 }
 
 console.log(plugins);
