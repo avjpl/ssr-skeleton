@@ -1,5 +1,7 @@
 import React from 'react';
 
+if (process.env.WEBPACK) require('./home.pcss');
+
 const Home = () => (
   <div>
     <div id="top-container">
