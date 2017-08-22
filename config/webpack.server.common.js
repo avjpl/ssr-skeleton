@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const path = require('path');
 const merge = require('webpack-merge');
 const nodeExternals = require('webpack-node-externals');
@@ -16,13 +17,16 @@ const serverCommonConfig = merge([
     target: 'node',
     node: {
       __filename: true,
-      __dirname: true
+      __dirname: true,
     },
     externals: [nodeExternals()],
+    plugins: [
+      new webpack.IgnorePlugin(/\.p?css$/),
+    ],
   },
   parts.loadImages(),
   parts.loadJavaScript({
-    exclude: /node_modules/
+    exclude: /node_modules/,
   }),
   parts.lintJavaScript({ include: PATHS.server }),
 ]);

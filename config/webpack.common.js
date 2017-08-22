@@ -22,7 +22,7 @@ const commonConfig = merge([
   parts.loadJavaScript({
     include: [
       PATHS.client,
-      PATHS.app
+      PATHS.app,
     ]
   }),
   parts.loadFonts({
