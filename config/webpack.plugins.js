@@ -51,6 +51,4 @@ if (process.env.NODE_ENV !== 'development') {
   );
 }
 
-console.log(plugins);
-
 exports.plugins = plugins;
