@@ -32,7 +32,7 @@ module.exports = {
     'postcss-selector-matches': {},
     'postcss-selector-not': {},
     'postcss-reporter': {
-      clearMessages: true
+      clearMessages: true,
     },
   },
 };

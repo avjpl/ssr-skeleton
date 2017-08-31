@@ -10,9 +10,9 @@ const plugins = [
     {
       from: path.resolve(__dirname, '..', 'src', 'views'),
       to: path.resolve(__dirname, '..', 'dist', 'views'),
-    }
+    },
   ], {
-    debug: 'debug'
+    debug: 'debug',
   }),
   new StyleLintPlugin({
     files: '**/*.[sp]?(a|c)ss',
@@ -33,7 +33,7 @@ if (process.env.NODE_ENV === 'development') {
       'process.env': {
         'WEBPACK': JSON.stringify(true),
         'NODE_ENV': JSON.stringify('development'),
-      }
+      },
     })
   );
   plugins.push(new webpack.NoEmitOnErrorsPlugin());
@@ -46,8 +46,8 @@ if (process.env.NODE_ENV !== 'development') {
       'process.env': {
         'WEBPACK': JSON.stringify(true),
         'NODE_ENV': JSON.stringify('production'),
-      }
-    }),
+      },
+    })
   );
 }
 

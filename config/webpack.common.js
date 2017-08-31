@@ -23,7 +23,7 @@ const commonConfig = merge([
     include: [
       PATHS.client,
       PATHS.app,
-    ]
+    ],
   }),
   parts.loadFonts({
     options: {

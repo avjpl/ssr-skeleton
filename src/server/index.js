@@ -1,18 +1,14 @@
+const webpack = require('webpack');
 const path = require('path');
 const React = require('react');
 const bunyan = require('bunyan');
 const express = require('express');
-const webpack = require('webpack');
-const webpackConfig = require('../../webpack.config');
+const cors = require('cors');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 
+const webpackConfig = require('../../webpack.config');
 const handleRequest = require('./utils/handleRequest');
 const layoutSetup = require('./utils/layoutSetup');
-
-const dist = {
-  production: path.resolve(__dirname, '../..', 'dist'),
-  development: path.resolve(__dirname, '../../dist'),
-};
 
 const reqSerializer = req => ({
   method: req.method,
@@ -24,11 +20,12 @@ const reqSerializer = req => ({
   params: req.params,
   /***************************************************************/
   /*                                                             */
-  /*  This is very verbose. Maybe find a why to minimize output  */
+  /*    req.headers is very verbose. Try a to minimize output    */
   /*                                                             */
   /***************************************************************/
   // headers: req.headers,
 });
+
 const log = bunyan.createLogger({
   name: 'ssr',
   serializers: { req: reqSerializer },
@@ -39,6 +36,10 @@ const app = express();
 app.use((req, res, next) => {
   log.info({ req });
   next();
+});
+
+app.get('/favicon.ico', function (req, res) {
+  res.status(204);
 });
 
 if (process.env.NODE_ENV === 'development') {
@@ -56,8 +57,9 @@ if (process.env.NODE_ENV === 'development') {
   app.use(require('compression')());
 }
 
-app.use('/', express.static(dist[process.env.NODE_ENV]));
+app.use('/', express.static(path.resolve(__dirname, '../../dist')));
 app.use(handleRequest().init);
+app.use(cors);
 
 layoutSetup(app);
 
