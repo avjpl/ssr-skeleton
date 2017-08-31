@@ -18,8 +18,10 @@ module.exports = {
   // extends: 'eslint:recommended',
   parserOptions: {
     sourceType: 'module',
+    ecmaVersion: 6,
     ecmaFeatures: {
       jsx: true,
+      experimentalObjectRestSpread: true,
     }
   },
   rules: {
@@ -37,6 +39,7 @@ module.exports = {
     quotes: ['warn', 'single'],
     semi: ['warn', 'always'],
     // 'no-unused-vars': ['warn'],
-    'no-console': 0
+    'no-console': 0,
+    'indent': [2, 2, { 'SwitchCase': 1 }],
   },
 };

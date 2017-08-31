@@ -1,29 +1,45 @@
 const React = require('react');
 const ReactDOMServer = require('react-dom/server');
-const { renderRoutes } = require('react-router-config');
+
+const {
+  renderRoutes,
+  matchRoutes,
+} = require('react-router-config');
 const { StaticRouter } = require('react-router');
+const { createStore, applyMiddleware } = require('redux');
+const { Provider } = require('react-redux');
+const { configureStore } = require('../../shared/redux/store/configureStore');
 
-// const fetchComponentData = require('./fetchData').default;
-
-import App from '../../shared/components/App';
+const App = require('../../shared/components/App').default;
+const { routes } = require('../../shared/routes');
 
 module.exports = () => ({
   init: (req, res) => {
-    const context = {};
+    const store = configureStore();
+    const match = matchRoutes(routes, req.url);
 
-    const html = ReactDOMServer.renderToString(
-      <StaticRouter
-        location={ req.url }
-        context={ context }
-      >
-        <App />
-      </StaticRouter>
-    );
+    const promises = match.map(({ route }) => {
+      const fetchData = route.component.needs;
+      return store.dispatch(fetchData());
+    });
 
-    if (context.url) {
-      res.redirect(302, context.url);
-    } else {
-      res.render('index', { html, data: JSON.stringify({data: 'testing'}) });
-    }
+    Promise.all(promises).then(() => {
+      const initialState = store.getState();
+      const context = {};
+      const html = ReactDOMServer.renderToString(
+        <StaticRouter
+          location={ req.url }
+          context={ context }
+        >
+          <Provider store={ store }>
+            <App />
+          </Provider>
+        </StaticRouter>
+      );
+
+      context.url
+        ? res.redirect(302, context.url)
+        : res.render('index', { html, state: JSON.stringify(initialState) });
+    });
   },
 });

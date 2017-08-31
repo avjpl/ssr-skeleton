@@ -5,7 +5,7 @@ import {
 } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
 
-import { mainRoutes } from '../routes';
+import { routes } from '../routes';
 
 const App = () => (
   <div id="container">
@@ -21,7 +21,7 @@ const App = () => (
       </li>
     </ul>
 
-    { renderRoutes(mainRoutes) }
+    {renderRoutes(routes) }
   </div>
 );
 

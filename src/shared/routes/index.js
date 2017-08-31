@@ -2,7 +2,7 @@ import Home from '../components/Home';
 import About from '../components/About';
 import Topics from '../components/Topics';
 
-export const mainRoutes = [
+export const routes = [
   {
     component: Home,
     path: '/',

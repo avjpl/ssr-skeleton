@@ -15,6 +15,7 @@
   ],
   "plugins": [
     "transform-class-properties",
-    "transform-react-jsx-img-import"
+    "transform-react-jsx-img-import",
+    "transform-object-rest-spread"
   ]
 }
