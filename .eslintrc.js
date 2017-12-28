@@ -1,10 +1,5 @@
 module.exports = {
-  // parser: "babel-eslint",
-  // extends: "airbnb",
-  extends: [
-    // "eslint:recommended",
-    // "plugin:react/recommended"
-  ],
+  parser: "babel-eslint",
   env: {
     browser: true,
     commonjs: true,
@@ -22,7 +17,8 @@ module.exports = {
     ecmaFeatures: {
       jsx: true,
       experimentalObjectRestSpread: true,
-    }
+    },
+    allowImportExportEverywhere: true,
   },
   rules: {
     // "jsx-a11y/aria-props": 2,

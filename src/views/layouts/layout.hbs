@@ -3,7 +3,9 @@
   <head>
     <meta charset="utf-8">
     <title>Universal</title>
-    <link rel="stylesheet" href="main.css" />
+    {{#if isDev}}
+      <link rel="stylesheet" href="main.css" />
+    {{/if}}
   </head>
   <body>
     <header>
@@ -19,6 +21,8 @@
     <script>
       window.__INITIAL_STATE__ = {{{state}}}
     </script>
-    <script src="main.js"></script>
+    {{#if isDev}}
+      <script src="main.js"></script>
+    {{/if}}
   </body>
 </html>

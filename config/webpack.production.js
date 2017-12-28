@@ -6,6 +6,7 @@ const parts = require('./webpack.parts');
 const { PATHS } = require('./webpack.constants');
 
 const productionConfig = merge([
+  parts.generateSourceMaps({ type: 'source-map' }),
   parts.extractCSS({
     use: [
       {

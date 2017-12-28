@@ -38,8 +38,8 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/favicon.ico', function (req, res) {
-  res.status(204);
+app.get('/favicon.ico', (req, res) => {
+  return res.status(204);
 });
 
 if (process.env.NODE_ENV === 'development') {

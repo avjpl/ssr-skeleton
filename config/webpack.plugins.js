@@ -5,6 +5,8 @@ const DashboardPlugin = require('webpack-dashboard/plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
+const env = process.env.NODE_ENV === 'development';
+
 const plugins = [
   new CopyWebpackPlugin([
     {
@@ -18,13 +20,13 @@ const plugins = [
     files: '**/*.[sp]?(a|c)ss',
     lintDirtyModulesOnly: true,
   }),
-  new DashboardPlugin(),
   new webpack.ProvidePlugin({
     $: 'jquery',
     jQuery: 'jquery',
     'window.jQuery': 'jquery',
     foundation: 'Foundation',
   }),
+  ...(env === 'development' ? [new DashboardPlugin()] : []),
 ];
 
 if (process.env.NODE_ENV === 'development') {
@@ -37,7 +39,10 @@ if (process.env.NODE_ENV === 'development') {
     })
   );
   plugins.push(new webpack.NoEmitOnErrorsPlugin());
-  plugins.push(new webpack.HotModuleReplacementPlugin());
+
+  if (env) {
+    plugins.push(new webpack.HotModuleReplacementPlugin());
+  }
 }
 
 if (process.env.NODE_ENV !== 'development') {
