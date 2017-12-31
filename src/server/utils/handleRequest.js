@@ -11,7 +11,7 @@ const { Provider } = require('react-redux');
 const { configureStore } = require('../../shared/redux/store/configureStore');
 
 const App = require('../../shared/components/App').default;
-const { routes } = require('../../shared/routes');
+const { routes } = require('../../shared/routes/syncRoutes');
 
 const isDev = process.env.NODE_ENV === 'development';
 
@@ -21,6 +21,10 @@ module.exports = () => ({
     const match = matchRoutes(routes, req.url);
 
     const promises = match.map(({ route }) => {
+      if (!route.component.needs) {
+        return Promise.resolve();
+      }
+
       const fetchData = route.component.needs;
       return store.dispatch(fetchData());
     });

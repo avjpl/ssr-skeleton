@@ -29,6 +29,14 @@ const plugins = [
   ...(env === 'development' ? [new DashboardPlugin()] : []),
 ];
 
+if (process.env.NODE_ENV === 'production') {
+  plugins.push(
+    new webpack.NormalModuleReplacementPlugin(/(.*)syncRoutes(\.*)/, resource => {
+      resource.request = resource.request.replace(/syncRoutes/, 'asyncRoutes');
+    })
+  );
+}
+
 if (process.env.NODE_ENV === 'development') {
   plugins.push(
     new webpack.DefinePlugin({

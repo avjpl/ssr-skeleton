@@ -11,9 +11,11 @@ export const routes = [
   {
     component: About,
     path: '/about',
+    exact: true,
   },
   {
     component: Topics,
     path: '/topics',
+    exact: true,
   },
 ];

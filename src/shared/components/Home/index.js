@@ -11,7 +11,6 @@ class Home extends Component {
   componentDidMount() {
     const { comments, fetchComments } = this.props;
 
-    console.log('componentDidMount');
     if (comments.length === 0) {
       fetchComments();
     }

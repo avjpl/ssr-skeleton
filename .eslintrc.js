@@ -13,12 +13,12 @@ module.exports = {
   // extends: 'eslint:recommended',
   parserOptions: {
     sourceType: 'module',
+    allowImportExportEverywhere: true,
     ecmaVersion: 6,
     ecmaFeatures: {
       jsx: true,
       experimentalObjectRestSpread: true,
-    },
-    allowImportExportEverywhere: true,
+    }
   },
   rules: {
     // "jsx-a11y/aria-props": 2,
