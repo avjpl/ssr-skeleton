@@ -31,7 +31,7 @@ const commonConfig = merge([
   },
   {
     ...(
-      !env 
+      !env
         ? parts.extractBundles([
             {
               name: 'vendor',
@@ -47,7 +47,7 @@ const commonConfig = merge([
   },
   {
     ...(
-      !env 
+      !env
         ? parts.extractBundles([
             {
               name: 'manifest',

@@ -21,7 +21,7 @@ function AsyncComponent(getComponent) {
         return <Component { ...this.props } />;
       }
 
-      return null;
+      return null; // for a loader/spinner component
     }
   };
 }
