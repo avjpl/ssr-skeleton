@@ -7,8 +7,8 @@ const { productionConfig } = require('./config/webpack.production');
 
 module.exports = env => {
   if (env === 'production') {
-    return merge(commonConfig, productionConfig);
+    return merge(commonConfig(env), productionConfig);
   }
 
-  return merge(commonConfig, developmentConfig);
+  return merge(commonConfig(env), developmentConfig);
 };

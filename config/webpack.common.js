@@ -3,14 +3,14 @@ const merge = require('webpack-merge');
 
 const parts = require('./webpack.parts');
 const { plugins } = require('./webpack.plugins');
+const { entries } = require('./webpack.entry');
 
-const { PORT, PATHS } = require('./webpack.constants');
+const { PATHS } = require('./webpack.constants');
 
-const commonConfig = merge([
+const commonConfig = (env) => merge([
   {
     entry: [
-      `webpack-hot-middleware/client?http://0.0.0.0:${ PORT }/`,
-      PATHS.client,
+      ...entries(env),
     ],
     output: {
       path: PATHS.dist,
