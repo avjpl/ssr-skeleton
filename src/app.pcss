@@ -164,3 +164,129 @@ h2 {
     display: block;
   }
 }*/
+
+/* grids */
+/*
+.box {
+  color: #fff;
+  padding: 1em;
+  text-align: center;
+  background-color: #efefef;
+}
+
+.tweets   { background-color: #a2ded0; }
+.replies  { background-color: #f4d03f; }
+.search   { background-color: #6c7a89; }
+.messages { background-color: #59abe3; }
+.app-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 100vh;
+  grid-template-areas: "search replies messages tweets";
+}
+
+@media screen and (max-width: 1024px) {
+  .app-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 50vh 50vh;
+  }
+}
+
+.search {
+  grid-area: search;
+}
+.replies {
+  grid-area: replies;
+}
+.messages {
+  grid-area: messages;
+}
+.tweets {
+  grid-area: tweets;
+}
+*/
+
+/*
+.app-slack-layout {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 100px 250px 1fr;
+  grid-template-rows: auto 1fr auto;
+}
+
+.team {
+  grid-columns: 1;
+  grid-rows: 1 / 4;
+}
+
+.channels {
+  grid-columns: 2;
+  grid-rows: 1 / 4;
+}
+
+.header {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.messages {
+  grid-columns: 3;
+  grid-row: 2;
+}
+
+.input {
+  grid-column: 3;
+  grid-row: 3;
+}
+*/
+
+.box {
+  color: white;
+  font-weight: blod;
+  text-align: center;
+  padding-top: 35px;
+}
+
+.app-layout-grid-pos {
+  display: grid;
+  grid-template-columns: 150px 150px 150px;
+  grid-template-rows: 100px 100px 100px;
+  grid-row-gap: 10px;
+  grid-column-gap: 10px;
+}
+
+.a {
+  background: lightblue;
+  // grid-row-start: 1;
+  // grid-column-start: 3;
+}
+
+.b {
+  background: lightcoral;
+}
+
+/*
+.c {
+  background: plum;
+  grid-row: 2 / 4;
+  grid-column: 2 / 4;
+}
+*/
+
+.c {
+  background: plum;
+  grid-area: 2 / 2 / 4 / 4;
+}
+
+.d {
+  background: lightsalmon;
+}
+
+.e {
+  background: lightseagreen;
+}
+
+.f {
+  background: lightslategray;
+}

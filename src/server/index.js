@@ -33,6 +33,8 @@ const log = bunyan.createLogger({
 
 const app = express();
 
+let wrap = fn => (...args) => fn(...args).catch(args[2]);
+
 app.use((req, res, next) => {
   log.info({ req });
   next();
@@ -56,6 +58,32 @@ if (process.env.NODE_ENV === 'development') {
 } else {
   app.use(require('compression')());
 }
+
+const fetch = require('node-fetch');
+
+app.get('/test', wrap(async function (req, res) {
+  let response = await fetch('https://jsonplaceholder.typicode.com/posts');
+  const data = await response.json();
+  console.log(data);
+
+  // let data = await queryDb()
+  // // handle data
+  // let csv = await makeCsv(data)
+  // // handle csv
+  res.json(data);
+}));
+
+app.get('/grid', (req, res) => {
+  res.render('grids', {});
+});
+
+app.get('/slack', (req, res) => {
+  res.render('slack', {});
+});
+
+app.get('/grid-positions', (req, res) => {
+  res.render('grid-positions', {});
+});
 
 app.use('/', express.static(path.resolve(__dirname, '../../dist')));
 app.use(handleRequest().init);
