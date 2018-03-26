@@ -6,6 +6,7 @@ const express = require('express');
 const cors = require('cors');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 
+const { SERVER_PORT } = require('../../config/webpack.constants');
 const webpackConfig = require('../../webpack.config');
 const handleRequest = require('./utils/handleRequest');
 const layoutSetup = require('./utils/layoutSetup');
@@ -63,4 +64,4 @@ app.use(cors);
 
 layoutSetup(app);
 
-app.listen(5000);
+app.listen(SERVER_PORT);

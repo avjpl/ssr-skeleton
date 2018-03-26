@@ -11,9 +11,4 @@ export const routes = [
     path: '/about',
     exact: true,
   },
-  {
-    component: AsyncComponent(() => System.import('../components/Topics')),
-    path: '/topics',
-    exact: true,
-  },
 ];

@@ -1,6 +1,12 @@
 const path = require('path');
 
-exports.PORT = 3100;
+/*
+  Required by evennode
+    process.env.PORT
+*/
+exports.CLIENT_PORT = process.env.CLIENT_PORT || 3100;
+exports.SERVER_PORT = process.env.SERVER_PORT || 5000;
+
 exports.PATHS = {
   client: path.resolve(__dirname, '..', 'src', 'client'),
   app: path.resolve(__dirname, '..', 'src'),

@@ -1,6 +1,5 @@
 import Home from '../components/Home';
 import About from '../components/About';
-import Topics from '../components/Topics';
 
 export const routes = [
   {
@@ -11,11 +10,6 @@ export const routes = [
   {
     component: About,
     path: '/about',
-    exact: true,
-  },
-  {
-    component: Topics,
-    path: '/topics',
     exact: true,
   },
 ];

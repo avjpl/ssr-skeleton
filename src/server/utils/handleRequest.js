@@ -13,8 +13,6 @@ const { configureStore } = require('../../shared/redux/store/configureStore');
 const App = require('../../shared/components/App').default;
 const { routes } = require('../../shared/routes/syncRoutes');
 
-const isDev = process.env.NODE_ENV === 'development';
-
 module.exports = () => ({
   init: (req, res) => {
     const store = configureStore();
@@ -45,7 +43,7 @@ module.exports = () => ({
 
       context.url
         ? res.redirect(302, context.url)
-        : res.render('index', { html, state: JSON.stringify(initialState), isDev  });
+        : res.render('index', { html, state: JSON.stringify(initialState) });
     });
   },
 });
