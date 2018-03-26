@@ -7,9 +7,10 @@
     "dashboard": "nodemon --watch webpack.config.js --exec \"webpack-dashboard -- webpack-dev-server --env development\"",
     "build": "NODE_ENV=production webpack --env production",
     "build:server": "NODE_ENV=production webpack --env production --config webpack.server.config.js",
-    "build:all": "npm run build && npm run build:server",
+    "build:all": "yarn build && yarn build:server",
     "start": "NODE_ENV=production node dist/server | bunyan",
     "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "lint:style:verbose": "stylelint app/**/*.css",
     "lint:style:silent": "stylelint --silent app/**/*.css"
   },
@@ -54,7 +55,7 @@
     "postcss-custom-media": "^6.0.0",
     "postcss-each": "^0.10.0",
     "postcss-flexbox": "^1.0.3",
-    "postcss-font-awesome": "^0.3.4",
+    "postcss-font-awesome": "^0.4.0",
     "postcss-font-magician": "^2.0.0",
     "postcss-import": "^10.0.0",
     "postcss-loader": "^2.0.6",
@@ -90,12 +91,14 @@
     "bunyan": "^1.8.10",
     "cors": "^2.8.4",
     "font-awesome": "^4.7.0",
+    "node-fetch": "^1.7.3",
     "ramda": "^0.24.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.6",
     "react-router-config": "^1.0.0-beta.3",
     "react-router-dom": "^4.1.1",
-    "redux": "^3.7.2"
+    "redux": "^3.7.2",
+    "whatwg-fetch": "^2.0.3"
   }
 }

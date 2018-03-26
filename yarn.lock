@@ -6430,9 +6430,9 @@ postcss-flexbox@^1.0.3:
     ava "^0.20.0"
     postcss "^5.0.13"
 
-postcss-font-awesome@^0.3.4:
-  version "0.3.4"
-  resolved "https://registry.yarnpkg.com/postcss-font-awesome/-/postcss-font-awesome-0.3.4.tgz#17bed8b582d01f15726aaa8cdcb49a59a288f1b5"
+postcss-font-awesome@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/postcss-font-awesome/-/postcss-font-awesome-0.4.0.tgz#083a1f6501a8567b803c94f32fb5e88bbedbbfdc"
   dependencies:
     postcss "^5.0.14"
 
