@@ -1,7 +1,46 @@
 const path = require('path');
+const webpack = require('webpack');
 
+const InlineChunkManifestHtmlWebpackPlugin = require('inline-chunk-manifest-html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CleanWebpackPlugin = require("clean-webpack-plugin");
+const ManifestPlugin = require('webpack-manifest-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const PurifyCSSPlugin = require('purifycss-webpack');
+
+exports.clean = (path, opts) => ({
+  plugins: [
+    new CleanWebpackPlugin(path, opts)
+  ],
+});
+
+exports.html = (opts) => ({
+  plugins: [
+    new HtmlWebpackPlugin(opts)
+  ],
+});
+
+exports.InlineHtmlManifest = (opts) => ({
+  plugins: [
+    new InlineChunkManifestHtmlWebpackPlugin(opts)
+  ],
+});
+
+exports.extractManifest = (opts) => ({
+  plugins: [
+    new ManifestPlugin(opts)
+  ],
+});
+
+exports.extractBundles = bundles => ({
+  plugins: bundles.map(bundle => (
+    new webpack.optimize.CommonsChunkPlugin(bundle)
+  )),
+});
+
+exports.generateSourceMaps = ({ type }) => ({
+  devtool: type,
+});
 
 exports.devServer = ({ host, port } = {}) => ({
   devServer: {

@@ -26,9 +26,18 @@ const plugins = [
     'window.jQuery': 'jquery',
     foundation: 'Foundation',
   }),
+  ...(env === 'development' ? [new DashboardPlugin()] : []),
 ];
 
-if (env === 'development') {
+if (process.env.NODE_ENV === 'production') {
+  plugins.push(
+    new webpack.NormalModuleReplacementPlugin(/(.*)syncRoutes(\.*)/, resource => {
+      resource.request = resource.request.replace(/syncRoutes/, 'asyncRoutes');
+    })
+  );
+}
+
+if (process.env.NODE_ENV === 'development') {
   plugins.push(
     new webpack.DefinePlugin({
       'process.env': {
@@ -39,7 +48,10 @@ if (env === 'development') {
   );
   plugins.push(new DashboardPlugin());
   plugins.push(new webpack.NoEmitOnErrorsPlugin());
-  plugins.push(new webpack.HotModuleReplacementPlugin());
+
+  if (env) {
+    plugins.push(new webpack.HotModuleReplacementPlugin());
+  }
 }
 
 if (env !== 'development') {
